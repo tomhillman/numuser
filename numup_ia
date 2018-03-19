@@ -28,6 +28,6 @@ do
         rm numtemp.json
         i=$(( i+1 ))
     else
-        echo "Wrong API Key please retry:"
+        echo "Wrong API Key please retry."
     fi;
 done
