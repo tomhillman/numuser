@@ -6,7 +6,7 @@
 #Ubuntu:
 #sudo apt-get install jq
 #Fedora
-#sudo apt-get install jq
+#sudo dnf install jq
 
 #Loop to request API key and process user list
 i=1
