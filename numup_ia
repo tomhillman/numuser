@@ -1,0 +1,33 @@
+#!/bin/bash
+#A simple bash script to update the NJDHTS CAT User List
+#Author: Thomas Hillman 3/15/18
+
+#First install jq, a command line JSON editor for linux, then run script to download user list.
+#Ubuntu:
+#sudo apt-get install jq
+#Fedora
+#sudo apt-get install jq
+
+#Loop to request API key and process user list
+i=1
+until [ $i -gt 1 ]
+do
+    read -p 'Please enter your Numetric API Key: ' apikey
+    echo
+    echo Thank you, we are now downloading the current user list.
+
+#Curl request to Numetric API - downloads current user list in JSON format
+    if curl -s \
+        --output numtemp.json \
+        --fail \
+        --request GET \
+        --url https://api.numetric.com/v3/user \
+        --header "authorization: ${apikey}"; then
+    #Process JSON output to CSV (output in same directoy as this script)
+        jq -r '.[] | [.firstName, .lastName, .email] | @csv' numtemp.json > NumetricUsers.csv
+        rm numtemp.json
+        i=$(( i+1 ))
+    else
+        echo "Wrong API Key please retry or Ctrl+C to quit:"
+    fi;
+done
