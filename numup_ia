@@ -12,7 +12,7 @@
 i=1
 until [ $i -gt 1 ]
 do
-    read -p 'Please enter your Numetric API Key: ' apikey
+    read -p 'Please enter your Numetric API Key or Ctrl+C to exit: ' apikey
     echo
     echo Thank you, we are now downloading the current user list.
 
@@ -28,6 +28,6 @@ do
         rm numtemp.json
         i=$(( i+1 ))
     else
-        echo "Wrong API Key please retry or Ctrl+C to quit:"
+        echo "Wrong API Key please retry:"
     fi;
 done
