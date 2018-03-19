@@ -1,2 +1,2 @@
 # numuser
-Get JSON Numetric User List and export to CSV
+Shell script gets JSON Numetric User List and exports to CSV
